@@ -21,6 +21,7 @@ if __name__ == '__main__':
     start_x, start_y, end_x, end_y=0,0,0,0
     cv2.namedWindow('img')
     cv2.setMouseCallback('img',draw_circle)
+    get_png()
     while(1):
         img = cv2.imread('screen.png')
         img = cv2.resize(img,(288,510))
@@ -28,12 +29,13 @@ if __name__ == '__main__':
         k =cv2.waitKey(5) & 0xFF
         if  k== ord('p'):
             break
-        if k == ord('1'):
+        if k ==ord('1'):
+            get_png()
+        if end_x!=0:
             dis=(abs(end_x-start_x)**2+abs(end_y-start_y)**2)**0.5
             time1 = int(dis*5)
             jump(time1)
             time.sleep(1)
             get_png()
-        if k ==ord('2'):
-            get_png()
+            start_x, start_y, end_x, end_y = 0, 0, 0, 0
     cv2.destroyAllWindows()
