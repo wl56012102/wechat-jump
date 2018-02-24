@@ -1,9 +1,12 @@
 import os
 import cv2
 import time
+import random
 
 def jump(time):
-    os.system("adb shell input touchscreen swipe 100 100 100 100 %s"%time)
+    random_x = random.randint(100,200)
+    random_y = random.randint(300,400)
+    os.system("adb shell input touchscreen swipe %s %s %s %s %s"%(random_x,random_y,random_x,random_y,time))
 
 def get_png():
     os.system("adb shell screencap -p /sdcard/screen.png")
